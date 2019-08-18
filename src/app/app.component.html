@@ -37,8 +37,12 @@
 
 
 <!-- Podemos também declarar uma variável para saber o indice do array de uma lista, o primeiro começa com o valor 0 -->
-<ul>
-  <li *ngFor="let student of students; let i=index">{{ i+1}} - {{ student.name }}</li>
-</ul>
+<!-- 
+  <ul>
+    <li *ngFor="let student of students; let i=index">{{ i+1}} - {{ student.name }}</li>
+  </ul> 
+-->
+
+<app-student></app-student>
 
 <router-outlet></router-outlet>

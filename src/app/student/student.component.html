@@ -24,14 +24,33 @@
     será controlada via CSS com o diplay block ou none 
 -->
 
-<div>
-    Student: {{ student.name }}
-    <div *ngIf="student.isJedi">
-        Jedi Temple: Coruscant
-    </div>
-</div> 
+<!-- 
+    <div>
+        Student: {{ student.name }}
+        <div *ngIf="student.isJedi">
+            Jedi Temple: {{ student.temple }}
+        </div>
+    </div>  
+-->
 <!-- 
     Obs: No caso de usar a diretiva ngIf o angular usa templates de html5 para gerar 
     o componente, apenas se a expressâo for true ele vai fazer um clone do elemento
     e deixar-lo disponível no DOM diferente do hidden 
 -->
+
+
+<!-- 
+    Neste caso usando operador de navegação segura cado o valor da propriedade seja 
+    undefined, basicamente dizemos ao angular que se até aquele ponto for undefined o restante
+    não precisa ser avaliado, evitando de mostra erros na tela 
+-->
+<div *ngIf="student">
+    Student: {{ student?.name }}
+    <div *ngIf="student?.isJedi">
+        Jedi Temple: {{ student?.temple }}
+    </div>
+</div> 
+
+<p *ngIf="!student">
+    Sem dados para exibir
+</p>
