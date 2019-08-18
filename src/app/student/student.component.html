@@ -9,15 +9,29 @@
 -->
 
 <!-- Modelo feito com objeto -->
-<div>
-    Student: {{ student.name }}
-    <div [hidden]="!student.isJedi">
-        Jedi Temple: Coruscant
-    </div>
-</div> 
+<!-- 
+    <div>
+        Student: {{ student.name }}
+        <div [hidden]="!student.isJedi">
+            Jedi Temple: {{ student.temple }}
+        </div>
+    </div>  
+-->
 
 <!-- 
     Obs: Quanto utilizamos o atributo hidden de um elemento, aquele elemento 
     irá continuar sendo colocado no nosso DOM, mas a visibilidade do elemento
     será controlada via CSS com o diplay block ou none 
+-->
+
+<div>
+    Student: {{ student.name }}
+    <div *ngIf="student.isJedi">
+        Jedi Temple: Coruscant
+    </div>
+</div> 
+<!-- 
+    Obs: No caso de usar a diretiva ngIf o angular usa templates de html5 para gerar 
+    o componente, apenas se a expressâo for true ele vai fazer um clone do elemento
+    e deixar-lo disponível no DOM diferente do hidden 
 -->

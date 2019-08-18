@@ -21,8 +21,24 @@
 -->
 
 <!-- Modelo feito com um objeto -->
-<app-student [student]="luke"></app-student>
-<app-student [student]="han"></app-student>
-<app-student [student]="leia"></app-student>
+<!-- 
+  <app-student [student]="luke"></app-student>
+  <app-student [student]="han"></app-student>
+  <app-student [student]="leia"></app-student> 
+-->
+
+<!-- Modelo de diretiva ngFor -->
+<!-- 
+  Neste caso o ngFor vai iterar no array de studantes e a cada item ele 
+  vai criar uma váriavel temporária para aquele elemento. Então deve se passar
+  o elemento por refêrencia.
+-->
+<app-student *ngFor="let student of students" [student]="student"></app-student> 
+
+
+<!-- Podemos também declarar uma variável para saber o indice do array de uma lista, o primeiro começa com o valor 0 -->
+<ul>
+  <li *ngFor="let student of students; let i=index">{{ i+1}} - {{ student.name }}</li>
+</ul>
 
 <router-outlet></router-outlet>
