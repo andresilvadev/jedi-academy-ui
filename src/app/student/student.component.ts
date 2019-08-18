@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Student } from './student.model';
 
 @Component({
   selector: 'app-student',
@@ -7,8 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  name: string = 'Luke';
-  isJedi: boolean = true;
+  // Modelo vendo com propriedades
+  // @Input()
+  // name: string = 'Luke';
+
+  // @Input()
+  // isJedi: boolean = true;
+
+  // Modelo feito com Objeto
+  @Input()
+  student: Student;
 
   constructor() { }
 

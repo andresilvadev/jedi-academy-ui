@@ -1,6 +1,23 @@
+<!-- Modelo feito com propriedades -->
+<!-- 
+    <div>
+        Student: {{ name }}
+        <div [hidden]="!isJedi">
+            Jedi Temple: Coruscant
+        </div>
+    </div> 
+-->
+
+<!-- Modelo feito com objeto -->
 <div>
-    Student: {{ name }}
-    <div [hidden]="!isJedi">
+    Student: {{ student.name }}
+    <div [hidden]="!student.isJedi">
         Jedi Temple: Coruscant
     </div>
-</div>
+</div> 
+
+<!-- 
+    Obs: Quanto utilizamos o atributo hidden de um elemento, aquele elemento 
+    irá continuar sendo colocado no nosso DOM, mas a visibilidade do elemento
+    será controlada via CSS com o diplay block ou none 
+-->

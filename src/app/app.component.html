@@ -7,6 +7,22 @@
 
 <app-header></app-header>
 
-<app-student></app-student>
+<!-- 
+  Para usar a sintaxe de property bind é necessário usar o colchete senão 
+  ele vai entender como string true e não um literal booleano : 
+  Ex: isJedi="false" neste caso isJedi está recebendo um literal String 
+-->
+
+<!-- Modelo feito direto com propriedades do componente -->
+<!-- 
+  <app-student></app-student>
+  <app-student name="Han Solo" [isJedi]="false"></app-student>
+  <app-student name="Leia" [isJedi]="false"></app-student> 
+-->
+
+<!-- Modelo feito com um objeto -->
+<app-student [student]="luke"></app-student>
+<app-student [student]="han"></app-student>
+<app-student [student]="leia"></app-student>
 
 <router-outlet></router-outlet>
