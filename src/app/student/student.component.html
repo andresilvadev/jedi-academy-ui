@@ -45,9 +45,11 @@
     não precisa ser avaliado, evitando de mostra erros na tela 
 -->
 <div *ngIf="student">
-    Student: {{ student?.name }}
+    Student: <a href="#" (click)="clicked()" > {{ student?.name }} </a>
     <div *ngIf="student?.isJedi">
-        Jedi Temple: {{ student?.temple }}
+        Jedi Temple: {{ student?.temple }} <button (click)="description.focus()">Focus no text area!</button><br/>
+
+        <textarea #description cols="30" rows="10"></textarea>
     </div>
 </div> 
 
