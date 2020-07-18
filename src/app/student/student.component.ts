@@ -1,31 +1,44 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Student } from './student.model';
+import { Component, OnInit, Input } from "@angular/core";
+import { Student } from "./student.model";
 
 @Component({
-  selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  selector: "app-student",
+  templateUrl: "./student.component.html",
+  styleUrls: ["./student.component.css"],
 })
 export class StudentComponent implements OnInit {
+  // Habilita a propriedade para receber valores do componente parent
+  @Input() name: string;
 
-  // Modelo vendo com propriedades
-  // @Input()
-  // name: string = 'Luke';
+  // Habilita a propriedade para receber valores do componente parent
+  @Input() isJedi: boolean;
 
-  // @Input()
-  // isJedi: boolean = true;
+  // Habilita a propriedade para receber valores do componente parent
+  @Input() student: Student;
 
-  // Modelo feito com Objeto
-  @Input()
-  student: Student;
+  // Habilita a propriedade para receber valores do componente parent
+  @Input() studentForHidden: Student;
 
-  constructor() { }
+  // Habilita a propriedade para receber valores do componente parent
+  @Input() studentForIf: Student;
 
-  ngOnInit() {
+  // Habilita a propriedade para receber valores do componente parent
+  @Input() studentNewWithEvent: Student;
+
+  numPressionado: number = 0;
+
+  constructor() {}
+
+  ngOnInit() {}
+
+  clicked(event): void {
+    alert(`Student: ${this.studentNewWithEvent.name} `);
   }
 
-  clicked() {
-    console.log(`Studente: ${this.student.name} `);
+  keyDown(event): void {
+    this.numPressionado = this.numPressionado + 1;
+    console.log(
+      `Student KeyDown: ${this.studentNewWithEvent.name}, click ${this.numPressionado} `
+    );
   }
-
 }

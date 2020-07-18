@@ -1,48 +1,77 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>  
-</div>
 
 <app-header></app-header>
 
-<!-- 
-  Para usar a sintaxe de property bind é necessário usar o colchete senão 
-  ele vai entender como string true e não um literal booleano : 
-  Ex: isJedi="false" neste caso isJedi está recebendo um literal String 
--->
+<router-outlet></router-outlet>
 
-<!-- Modelo feito direto com propriedades do componente -->
-<!-- 
-  <app-student></app-student>
-  <app-student name="Han Solo" [isJedi]="false"></app-student>
-  <app-student name="Leia" [isJedi]="false"></app-student> 
--->
+<!--
+  Para usar a sintaxe de property bind é necessário usar o colchete senão
+  ele vai entender como string true e não um literal booleano :
+  Ex: isJedi="false" neste caso isJedi está recebendo um literal String
 
-<!-- Modelo feito com um objeto -->
-<!-- 
-  <app-student [student]="luke"></app-student>
-  <app-student [student]="han"></app-student>
-  <app-student [student]="leia"></app-student> 
+  Sempre que quiser passar um valor que não seja string, vc precisa passar
+  a sintaxa property binding
 -->
+<h3>Modelo com propriedades do componente</h3>
+<app-student name="Luke" [isJedi]="true"></app-student>
+<app-student name="Han Solo" [isJedi]="false"></app-student>
+<app-student name="Leia" [isJedi]="false"></app-student>
 
-<!-- Modelo de diretiva ngFor -->
-<!-- 
-  Neste caso o ngFor vai iterar no array de studantes e a cada item ele 
+<hr />
+
+<h3>Modelo com Objetos</h3>
+<app-student [student]="lukeObj"></app-student>
+<app-student [student]="hanObj"></app-student>
+<app-student [student]="leiaObj"></app-student>
+
+<hr />
+
+<!--
+  Neste caso o ngFor vai iterar no array de studantes e a cada item ele
   vai criar uma váriavel temporária para aquele elemento. Então deve se passar
   o elemento por refêrencia.
 -->
-<app-student *ngFor="let student of students" [student]="student"></app-student> 
+<h3>Modelo de diretiva ngFor - students - com hidden</h3>
+<app-student
+  *ngFor="let student of studentsList"
+  [studentForHidden]="student"
+></app-student>
 
+<hr />
 
-<!-- Podemos também declarar uma variável para saber o indice do array de uma lista, o primeiro começa com o valor 0 -->
-<!-- 
-  <ul>
-    <li *ngFor="let student of students; let i=index">{{ i+1}} - {{ student.name }}</li>
-  </ul> 
--->
+<h3>Modelo de diretiva ngFor - students - COM *ngIf</h3>
+<app-student
+  *ngFor="let student of studentsList"
+  [studentForIf]="student"
+></app-student>
 
-<app-student></app-student>
+<hr />
 
-<router-outlet></router-outlet>
+<h3>Modelo de diretiva ngFor - Se não existir um studant</h3>
+<p *ngIf="!student">
+  Sem dados para exibir
+</p>
+
+<hr />
+
+<h3>
+  Modelo de diretiva ngFor - Com Index <br />
+  <small>
+    Podemos também declarar uma variável para saber o indice do array de uma
+    lista, o primeiro começa com o valor 0
+  </small>
+</h3>
+
+<ul>
+  <li *ngFor="let student of studentsList; let i = index">
+    {{ i + 1 }} - {{ student.name }}
+  </li>
+</ul>
+
+<hr />
+
+<h3>Modelo de diretiva ngFor - Com Eventos e variável de referência</h3>
+<app-student
+  *ngFor="let student of studentsList"
+  [studentNewWithEvent]="student"
+></app-student>
